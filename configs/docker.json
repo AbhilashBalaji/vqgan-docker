@@ -1,10 +1,17 @@
 {
-    "prompts": ["a green painting of a potato made in unity"],
+    "prompts": [
+        "pretty wonderful world",
+        "Nature is among us",
+        "what is potato"
+    ],
     "image_prompts": [],
-    "max_iterations": 50,
+    "max_iterations": 1,
     "save_freq": 5,
-    "size": [200, 375],
-    "init_image": "",
+    "size": [
+        200,
+        375
+    ],
+    "init_image": "/samples/forest.png",
     "init_noise": "",
     "init_weight": 0.0,
     "mse_decay_rate": 0,
@@ -21,5 +28,10 @@
     "seed": -1,
     "optimizer": "Adam",
     "nwarm_restarts": -1,
-    "augments": ["Af", "Pe", "Ji", "Er"]
+    "augments": [
+        "Af",
+        "Pe",
+        "Ji",
+        "Er"
+    ]
 }
