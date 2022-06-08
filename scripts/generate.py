@@ -24,7 +24,8 @@ from core.utils.gradients import ClampWithGrad, vector_quantize
 
 PARAMS: Config = None
 # DEVICE = torch.device(os.environ.get("DEVICE", 'cuda' if torch.cuda.is_available() else 'cpu'))
-DEVICE = 'cpu'
+# DEVICE = 'cpu'
+DEVICE = "mps"
 NORMALIZE = Normalize(mean=[0.48145466, 0.4578275, 0.40821073],
                       std=[0.26862954, 0.26130258, 0.27577711], device=DEVICE)
 

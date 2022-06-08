@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from torchvision.models import VGG
-from torchvision.models.vgg import load_state_dict_from_url
+from torch.hub import load_state_dict_from_url 
 
 from typing import List, Union, cast
 
@@ -62,10 +62,14 @@ def load_vgg(model_dir: str, pretrained: bool = False, **kwargs):
     model = VGG(make_layers(cfg, batch_norm=False), **kwargs)
 
     if pretrained:
-        state_dict = load_state_dict_from_url('https://download.pytorch.org/models/vgg16-397923af.pth',
-                                              model_dir=model_dir,
-                                              file_name="vgg16-397923af.pth",
-                                              progress=True)
+        # state_dict = load_state_dict_from_url('https://download.pytorch.org/models/vgg16-397923af.pth',
+        #                                       model_dir=model_dir,
+        #                                       file_name="vgg16-397923af.pth",
+        #                                       progress=True)
+        state_dict = load_state_dict_from_url(url='https://download.pytorch.org/models/vgg16-397923af.pth',
+                                                model_dir=model_dir,
+                                                file_name="vgg16-397923af.pth",
+                                                progress=True)
         model.load_state_dict(state_dict)
         print(f"Loaded pretrained VGG16 model from '{model_dir}/vgg16-397923af.pth'")
 
