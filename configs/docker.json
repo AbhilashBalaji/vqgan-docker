@@ -1,8 +1,6 @@
 {
     "prompts": [
-        "pretty wonderful world",
-        "Nature is among us",
-        "what is potato"
+        "just blue"
     ],
     "image_prompts": [],
     "max_iterations": 1,

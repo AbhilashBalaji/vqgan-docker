@@ -2,7 +2,7 @@ import json
 import os
 import subprocess
 from flask import Flask , request
-from numpy import imag
+from numpy import imag, kaiser
 
 app = Flask(__name__)
 @app.route('/hello')
@@ -24,15 +24,19 @@ def gen():
             image = data['image']
         else :
             image = None
+        if 'steps' in data.keys():
+            steps = data['steps']
+        else :
+            steps = 1
     else : 
         return "bruh"
     # /Users/abhilash.balaji/Desktop/image-text/vqgan-docker/api
-    out = editConfig(input_text,image)
+    out = editConfig(input_text,image,steps)
     ret = runGenScript()
     return "GEN DID NOT BREAK!!: "+str(ret) 
 
 
-def editConfig(input_text:str,image=None):
+def editConfig(input_text:str,image=None,steps=1):
     filename = '../configs/docker.json'
     with open(filename, 'r') as f:
         data = json.load(f)
@@ -42,6 +46,9 @@ def editConfig(input_text:str,image=None):
                 data['init_image'] = "/samples/forest.png"
             else :
                 data['init_image'] = ""
+        
+        data['max_iterations'] = int(steps)
+
     os.remove(filename)
     with open(filename, 'w') as f:
         json.dump(data, f, indent=4)
